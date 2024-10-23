@@ -9,9 +9,6 @@ class Solution:
         
         #logn time o(1) constant memory
         left, right = 0, len(nums)-1
-        peak = 0
-        index = 0
-
         while left <=right:
             mid = left + ((right - left)//2) #integer division, finding the middle element of the array
             #check if left neighbor greater
