@@ -13,10 +13,10 @@ class Solution:
         queue.append(root)
 
         while queue:
-            level_size = len(queue)
-            level = []
+            level_size = len(queue) #take length of queue
+            level = [] #initialize the level list
 
-            for _ in range(level_size):
+            for _ in range(level_size): #traverse through the queue/level
                 currentNode = queue.popleft()
                 level.append(currentNode.val)
 
@@ -26,4 +26,4 @@ class Solution:
                     queue.append(currentNode.right)
                            
             result.append(level)
-        return result[::-1]
+        return result[::-1]  #reverse the list
