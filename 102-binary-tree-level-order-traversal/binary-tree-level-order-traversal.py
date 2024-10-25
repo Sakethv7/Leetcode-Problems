@@ -7,30 +7,31 @@
 
 #returning level order traversal means returning the array of nodes
 
-from queue import Queue
+from collections import deque
+
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
 
         if not root:
             return [] #return empty list if root node is Null/None
 
-        queue = Queue()
-        queue.put(root)
+        queue = deque()
+        queue.append(root)
 
         result =[]
 
-        while not queue.empty():
-            level_size = queue.qsize()
+        while queue:
+            level_size = len(queue)
             level =[]  #initilize a level list
 
             for _ in range (level_size):
-                currentNode = queue.get()
+                currentNode = queue.popleft()  #gets the front element of queue
                 level.append(currentNode.val)
 
                 if currentNode.left:
-                    queue.put(currentNode.left)
+                    queue.append(currentNode.left)
                 if currentNode.right:
-                    queue.put(currentNode.right)
+                    queue.append(currentNode.right)
                     
             result.append(level)
         
