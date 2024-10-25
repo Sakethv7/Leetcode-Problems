@@ -28,4 +28,5 @@ class Solution:
             if len(result) % 2 ==1:
                 level.reverse() # the odd numbered layers are reversed for zigzag
             result.append(level)
+            
         return result
