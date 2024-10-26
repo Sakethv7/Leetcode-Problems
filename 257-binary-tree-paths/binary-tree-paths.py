@@ -7,11 +7,13 @@
 class Solution:
     def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
         result = []
-
+        if not root:
+            return []
+            
         def dfs(node, current_path):
             if not node:
                 return []
-                
+
             current_path += str(node.val) #add the value as a string into current path which is passed as a string
 
             if not node.left and not node.right:
