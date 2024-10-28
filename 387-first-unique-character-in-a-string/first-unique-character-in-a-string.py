@@ -2,8 +2,6 @@ class Solution:
     def firstUniqChar(self, s: str) -> int:
         
         countchar = defaultdict(int)
-        stack = []
-
         #countchar['i'] +=1
         
         for char in s:
