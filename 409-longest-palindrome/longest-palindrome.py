@@ -20,3 +20,14 @@ class Solution:
             palindrome_length +=1
         
         return  palindrome_length
+
+'''
+        Example Run for "abccccdd"
+Frequency Map: {'a': 1, 'b': 1, 'c': 4, 'd': 2}
+For 'a' and 'b', they are odd, so palindrome_length += 0 and oddfound = True.
+For 'c', it’s even, so palindrome_length += 4.
+For 'd', it’s even, so palindrome_length += 2.
+After the loop, since oddfound = True, we add 1 to palindrome_length.
+Final Output: 7 (correct answer)
+
+'''
