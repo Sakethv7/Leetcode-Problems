@@ -1,20 +1,23 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        stack =[]
-        for character in s:
-            if character in ['(', '[', '{']:
-                stack.append(character)
+        stack = []
+        for char in s:
+            if char in ['{', '(', '[']:
+                stack.append(char)
             else:
-                if not stack: #check if the stack is empty, so that we do not pop if its empty, causing stack underflow
-                   return False
+                if not stack:    # If stack is empty, it means there's no matching opening bracket
+                    return False
+            
+                top = stack.pop()  # Pop the top of the stack to check against the closing bracket
+   
+   # Check if the popped element matches the current closing bracket
+                if char =='}' and top!='{':
+                    return False
+                    
+                if char ==')' and top!='(':
+                    return False
+                
+                if char ==']' and top!='[':
+                    return False
 
-                top = stack.pop()
-
-                if character == ')' and top !='(':
-                    return False
-                if character == '}' and top!='{':
-                    return False
-                if character ==']' and top!='[':
-                    return False
-        
-        return not stack #if the brackets were all matching then stack becomes empty after being poppped out. 
+        return True if not stack else False
