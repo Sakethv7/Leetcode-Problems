@@ -1,18 +1,22 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        l = 0
-        r = len(s)-1
+        #if a character is not alpha or numerical, increment left pointer and decrement right pointer
+        # if left character == right character ( need to be lowercase as well)
 
-        while(l<r):
-            if not s[l].isalnum():
-                l+=1
-            elif not s[r].isalnum():
-                r-=1
-            elif (s[l].lower() == s[r].lower()):
-                l+=1
-                r-=1
-            else:
+        left = 0
+        right = len(s)-1
+  
+        while left<right:
+            if not s[left].isalnum():  # Move the left pointer until we find an alphanumeric character
+                left +=1
+
+            elif not s[right].isalnum(): # Move the right pointer until we find an alphanumeric character
+                right -=1
+            
+            elif s[left].lower() != s[right].lower(): # Compare characters
                 return False
+            else:     # Move pointers inward only if characters match
+                left +=1  
+                right -=1
         
         return True
-        
