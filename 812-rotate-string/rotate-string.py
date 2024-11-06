@@ -6,7 +6,14 @@ class Solution:
         if len(s) != len(goal):
             return False
         
-        #By concatenating s with itself (i.e., s + s), all possible rotations of s are contained within this new string.
-        rotated_s = s+s
+        # #By concatenating s with itself (i.e., s + s), all possible rotations of s are contained within this new string.
+        # rotated_s = s+s
 
-        return goal in (rotated_s)
+        # return goal in (rotated_s)
+
+        for _ in range(len(s)):
+            if s == goal:
+                return True
+            s =s[1:] + s[0]  # Rotate `s` by moving the first character to the end
+        
+        return False
