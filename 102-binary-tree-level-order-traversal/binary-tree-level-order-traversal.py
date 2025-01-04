@@ -4,14 +4,9 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-
-#returning level order traversal means returning the array of nodes
-
-from collections import deque
-
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-
+        
         if not root:
             return [] #return empty list if root node is Null/None
 
