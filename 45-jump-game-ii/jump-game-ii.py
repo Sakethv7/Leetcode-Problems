@@ -1,23 +1,14 @@
 class Solution:
     def jump(self, nums: List[int]) -> int:
-        #nums[0], forward jump = num[i]
-        #return min number of jumps to reach nums[n-1], count basically
+        res = 0 # number of jumps
+        l = r = 0 # Current range of indices we can jump within
 
-            if len(nums)==1:
-                return 0
-
-            jumps = 0
-            current_end = 0
+        while r < len(nums) - 1:
             farthest = 0
-
-            for i in range(len(nums)):
-                farthest = max(farthest, i+nums[i])
-
-                if i == current_end:
-                    jumps+=1
-                    current_end = farthest
-
-                if current_end >= len(nums)-1:
-                    break
-            
-            return jumps
+            for i in range(l, r + 1): # Find the farthest we can reach within the current range [l, r]
+                farthest = max(farthest, i + nums[i])
+            l = r + 1 # Move the left bound of the range
+            r = farthest # Update the right bound to the farthest point we can reach
+            res += 1  # Increment the jump count
+        
+        return res
