@@ -1,20 +1,25 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        #ith day, prices[i] is the price of a given stock
-        #maximize profit by choosing a single day to buy and sell it on a different day 
-        #return max profit, if no profit return 0
-
-        #[7,1,5,3,6,4] output 5 buy in day 2 and sell on day 5 profit 6-1 = 5
-        #abosulute of profit - diff = 
-
-        max_profit = 0
+        # we need to return maximum profit which is the difference of 2 values in the array prices
+        maxprofit = 0
         cheapest_price = prices[0]
+        profit = 0
 
         for i in range(1, len(prices)):
-            if cheapest_price > prices[i]:
+            if prices[i] < cheapest_price:
                 cheapest_price = prices[i]
-            else:
+            
+            elif prices[i] > cheapest_price:
                 profit = prices[i] - cheapest_price
-                max_profit = max(max_profit, profit)
+                maxprofit =  max(maxprofit, profit)
+        
 
-        return max_profit
+        if maxprofit == 0:
+            return 0
+        
+        else:
+            return maxprofit
+        
+
+
+            
