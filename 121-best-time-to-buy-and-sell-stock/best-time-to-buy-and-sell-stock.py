@@ -12,13 +12,9 @@ class Solution:
             elif prices[i] > cheapest_price:
                 profit = prices[i] - cheapest_price
                 maxprofit =  max(maxprofit, profit)
+                            
         
-
-        if maxprofit == 0:
-            return 0
-        
-        else:
-            return maxprofit
+        return maxprofit
         
 
 
