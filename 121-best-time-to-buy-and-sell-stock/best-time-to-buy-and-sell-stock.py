@@ -1,21 +1,8 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        # we need to return maximum profit which is the difference of 2 values in the array prices
-        maxprofit = 0
-        cheapest_price = prices[0]
-        profit = 0
-
+        min_price = prices[0]
+        max_profit = 0
         for i in range(1, len(prices)):
-            if prices[i] < cheapest_price:
-                cheapest_price = prices[i]
-            
-            elif prices[i] > cheapest_price:
-                profit = prices[i] - cheapest_price
-                maxprofit =  max(maxprofit, profit)
-                            
-        
-        return maxprofit
-        
-
-
-            
+            max_profit = max(max_profit, prices[i] - min_price) #max_profit starts at 0 and only ever gets replaced when prices[i] - min_price is larger than 0 
+            min_price = min(min_price, prices[i]) #track minimum price of stock
+        return max_profit 
